@@ -377,92 +377,97 @@ int64 StringToInteger(string str, INTFMT base)
 
 double StringToDouble(string str) 
 {
-    int32 number;
     string pstr = str;
-    double power = 10.0;
-    double result = 0.0;
-    int16 exponent = 0;
-    uint16 number_of_digits = 0;
-    uint16 number_of_decimals = 0;
-    bool negative = false;
 
-    if(*pstr == '-')
+    if(pstr)
     {
-        negative = true;
-        pstr++;
-    }
+        int64 number = 0;
+        double power = 10.0;
+        double result = 0.0;
+        int16 exponent = 0;
+        uint16 number_of_digits = 0;
+        uint16 number_of_decimals = 0;
+        bool negative = false;
 
-    else if(*pstr == '+')
-    {
-        pstr++;
-    }
+        if(*pstr == '-')
+        {
+            negative = true;
+            pstr++;
+        }
 
-    while((*pstr <= '9') && (*pstr >= '0')) 
-    {
-        result = result * power + (*pstr - '0');
-        pstr++;
-        number_of_digits++;
-    }
-
-    if(*pstr == '.') 
-    {
-        pstr++;
+        else if(*pstr == '+')
+        {
+            pstr++;
+        }
 
         while((*pstr <= '9') && (*pstr >= '0')) 
         {
             result = result * power + (*pstr - '0');
             pstr++;
             number_of_digits++;
-            number_of_decimals++;
         }
 
-        exponent -= number_of_decimals;
-    }
-
-    if(number_of_digits == 0) 
-    {
-        result = 0.0;
-        return result;
-    }
-
-    if(negative) 
-    {
-        result = -result;
-    }
-
-    if((exponent < -307)  || (exponent > 1024)) 
-    {
-        result = -1;
-        return result;
-    }
-
-    number = exponent;
-
-    if(number < 0) 
-    {
-        number = -number;
-    }
-
-    while(number) 
-    {
-        if(number & 1) 
+        if(*pstr == '.') 
         {
-            if(exponent < 0) 
+            pstr++;
+
+            while((*pstr <= '9') && (*pstr >= '0')) 
             {
-               result /= power;
+                result = result * power + (*pstr - '0');
+                pstr++;
+                number_of_digits++;
+                number_of_decimals++;
+            }
+
+            exponent -= number_of_decimals;
+            number = exponent;
+        }
+
+        if(number_of_digits == 0) 
+        {
+            result = 0.0;
+            return result;
+        }
+
+        if(negative) 
+        {
+            result = -result;
+        }
+
+        if((exponent < -307)  || (exponent > 1024)) 
+        {
+            result = -1;
+            return result;
+        }
+
+        if(number < 0) 
+        {
+            number = -number;
+        }
+
+        while(number) 
+        {
+            if(number & 1) 
+            {
+                if(exponent < 0) 
+                {
+                   result /= power;
+                } 
+
+                else 
+                {
+                   result *= power;
+                }
             } 
 
-            else 
-            {
-               result *= power;
-            }
-        } 
+            number >>= 1;
+            power *= power;
+        }
 
-        number >>= 1;
-        power *= power;
+        return result;
     }
 
-    return result;
+    return 0x00ff00ff00ff00ff;
 }
 
 /* Convert wide cstrings to standard cstrings. */
