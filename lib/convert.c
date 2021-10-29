@@ -93,7 +93,7 @@ string UnsignedIntegerToString(uint64 integer, string out_result, uint32 out_res
         break;
     }
 
-    *presult = 0;
+    *presult = null;
 
     if(out_result)
     {
@@ -470,24 +470,3 @@ double StringToDouble(string str)
     return 0x00ff00ff00ff00ff;
 }
 
-/* Convert wide cstrings to standard cstrings. */
-
-string WideToAscii(wstring src)
-{
-    static int8 result[256];
-
-    uint16 chars_converted = 0;
-    string dst = result;
-
-    while(*src && (chars_converted < sizeof(result)))
-    {
-        *dst = (int8)*src;
-        ++dst;
-        ++src;
-        ++chars_converted;
-    }
-
-    *dst = null;
-
-    return (string)result;
-}

@@ -128,3 +128,25 @@ bool IsNumeric(string str)
 
     return numeric;
 }
+
+/* Convert wide cstrings to standard cstrings. */
+
+string WideToAscii(wstring src)
+{
+    static int8 result[256];
+
+    uint16 chars_converted = 0;
+    string dst = result;
+
+    while(*src && (chars_converted < sizeof(result)))
+    {
+        *dst = (int8)*src;
+        ++dst;
+        ++src;
+        ++chars_converted;
+    }
+
+    *dst = null;
+
+    return (string)result;
+}

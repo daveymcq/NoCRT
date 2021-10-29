@@ -26,4 +26,8 @@ int32 FindFirstOccurrenceOfString(string, string, bool);
 
 bool IsNumeric(string);
 
+/* Convert wide cstrings to standard cstrings. */
+
+string WideToAscii(wstring src);
+
 #endif
