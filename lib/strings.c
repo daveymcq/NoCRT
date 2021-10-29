@@ -150,3 +150,26 @@ string WideToAscii(wstring src)
 
     return (string)result;
 }
+
+/* Removes a single char from an ascii string. */
+
+string RemoveCharFromString(string s, char char_to_remove) 
+{
+    string src;
+    string dst;
+
+    for(src = dst = s; *src; src++) 
+    {
+        *dst = *src;
+
+        if(*dst != char_to_remove) 
+        {
+            dst++;
+        }
+    }
+
+    *dst = null;
+
+    return dst;
+}
+

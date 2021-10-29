@@ -28,6 +28,10 @@ bool IsNumeric(string);
 
 /* Convert wide cstrings to standard cstrings. */
 
-string WideToAscii(wstring src);
+string WideToAscii(wstring);
+
+/* Removes a single char from an ascii string. */
+
+string RemoveCharFromString(string, char);
 
 #endif
