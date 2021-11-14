@@ -1,4 +1,3 @@
-
 /* Encode URL */
 string urlencode(string URL)
 {
@@ -74,7 +73,6 @@ string urldecode(string URL)
        
        encoded_url[index++] = *pURL++;
     }
-
 
     encoded_url[index] = null;
     return (string)encoded_url;

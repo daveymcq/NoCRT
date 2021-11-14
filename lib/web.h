@@ -2,9 +2,9 @@
 #define _NCRT_WEB_H
 
 /* Encode URL */
-string urlencode(string url);
+string urlencode(string URL);
 
 /* Decode URL */
-string urldecode(string url);
+string urldecode(string URL);
 
 #endif
