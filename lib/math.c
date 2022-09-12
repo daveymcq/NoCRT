@@ -15,7 +15,6 @@ int64 Power(int64 base, int64 exponent)
         exponent >>= 1;
         base *= base;
     }
-    
-   if(result == 0) --result;
-   return result;
+
+    return result;
 }

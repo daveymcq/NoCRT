@@ -3,7 +3,7 @@
 
 uint64 MemoryZero(void *address, uint64 length)
 {
-    uint64 bytes_zeroed = 0;
+    uint32 bytes_zeroed = 0;
     int8 *paddress = (int8 *)address;
 
     while(length) 
@@ -19,7 +19,7 @@ uint64 MemoryZero(void *address, uint64 length)
 
 void *MemorySet(void *address, int8 value, uint64 length)
 {
-    uint64 bytes_set = 0;
+    uint32 bytes_set = 0;
     int8 *paddress = (int8 *)address;
 
     while(bytes_set < length)
@@ -35,7 +35,7 @@ void *MemorySet(void *address, int8 value, uint64 length)
 
 void *MemoryCopy(void *dest, void *src, uint64 length)
 {
-    uint64 bytes_copied = 0;
+    uint32 bytes_copied = 0;
     int8 *pdest = (int8 *)dest;
     int8 *psrc = (int8 *)src;
 
@@ -82,29 +82,58 @@ BYTE BitsToByte(BIT *bits)
     return result;
 }
 
-bool CheckBit(uint64 *address, uint8 bit)
+bool CheckBit(void *address, uint8 bit)
 {
-    return ((*address >> bit) & 1);
+    uint8 *paddress = (uint8 *)address;
+
+    if(paddress)
+    {
+        return ((*paddress >> bit) & 1);
+    }
+
+    return false;
 }
 
-bool SetBit(uint64 *address, uint8 bit)
+bool SetBit(void *address, uint8 bit)
 {
-    *address |= (1 << bit);
-    return CheckBit(address, bit);
+    uint8 *paddress = (uint8 *)address;
+
+    if(paddress)
+    {
+        *paddress |= (1 << bit);
+        return CheckBit(paddress, bit);
+    }
+
+    return false;
 }
 
-bool ClearBit(uint64 *address, uint8 bit)
+bool ClearBit(void *address, uint8 bit)
 {
-    *address &= ~(1 << bit);
-    return !CheckBit(address, bit);
+    uint8 *paddress = (uint8 *)address;
+
+    if(paddress)
+    {
+        *paddress &= ~(1 << bit);
+        return !CheckBit(paddress, bit);
+    }
+
+    return false;
 }
 
-bool ToggleBit(uint64 *address, uint8 bit)
+bool ToggleBit(void *address, uint8 bit)
 {
-    bool current_state, previous_state;
-    previous_state = CheckBit(address, bit);
-    *address ^= (1 << bit);
-    current_state = CheckBit(address, bit);
-    return (previous_state != current_state);
-}
+    uint8 *paddress = (uint8 *)address;
 
+    if(paddress)
+    {
+        bool current_state;
+        bool previous_state;
+
+        previous_state = CheckBit(paddress, bit);
+        *paddress ^= (1 << bit);
+        current_state = CheckBit(paddress, bit);
+        return (previous_state != current_state);
+    }
+
+    return false;
+}

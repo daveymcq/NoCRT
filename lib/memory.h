@@ -18,9 +18,9 @@ void *MemoryCopy(void *, void *, uint64);
 BIT *ByteToBits(BYTE, BIT *);
 BYTE BitsToByte(BIT *);
 
-bool CheckBit(uint64 *address, uint8 bit);
-bool SetBit(uint64 *address, uint8 bit);
-bool ClearBit(uint64 *address, uint8 bit);
-bool ToggleBit(uint64 *address, uint8 bit);
+bool CheckBit(void *, uint8);
+bool SetBit(void *, uint8);
+bool ClearBit(void *, uint8);
+bool ToggleBit(void *, uint8);
 
 #endif

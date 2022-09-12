@@ -65,7 +65,7 @@ string urldecode(string URL)
            code[1] = *(pURL + 2);
            code[2] = null;
 
-           encoded_url[index++] = (uint8)StringToInteger(code, FMT_INT_HEXADECIMAL);
+           encoded_url[index++] = (uint8)StringToInteger((string)code, FMT_INT_HEXADECIMAL);
 
            pURL += 3;
 
