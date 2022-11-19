@@ -15,16 +15,16 @@ string StringConcat(string, string);
 
 /* Checks equality of two c-strings. */
 
-bool StringCompare(string, string, bool);
+boolean StringCompare(string, string, boolean);
 
 /* Finds first occurrence of a string within another string.
    Returns the index into the string or -1 if non existent. */
 
-int32 FindFirstOccurrenceOfString(string, string, bool);
+int32 FindFirstOccurrenceOfString(string, string, boolean);
 
 /* Checks if a string is a number. */
 
-bool IsNumeric(string);
+boolean IsNumeric(string);
 
 /* Convert wide cstrings to standard cstrings. */
 

@@ -40,9 +40,9 @@ string StringConcat(string str1, string str2)
 
 /* Checks equality of two c-strings. */
 
-bool StringCompare(string string_a, string string_b, bool case_sensitive)
+boolean StringCompare(string string_a, string string_b, boolean case_sensitive)
 {
-    bool result = (StringLength(string_a) == StringLength(string_b));
+    boolean result = (StringLength(string_a) == StringLength(string_b));
 
     if(result)
     {
@@ -61,9 +61,9 @@ bool StringCompare(string string_a, string string_b, bool case_sensitive)
 /* Finds first occurrence of a string within another string.
    Returns the index into the string or -1 if non existent. */
 
-int32 FindFirstOccurrenceOfString(string haystack, string needle, bool case_sensitive)
+int32 FindFirstOccurrenceOfString(string haystack, string needle, boolean case_sensitive)
 {
-    int32 index = 0;
+    uint32 index = 0;
     uint32 needle_length = StringLength(needle);
     uint32 haystack_length = StringLength(haystack);
 
@@ -98,12 +98,12 @@ int32 FindFirstOccurrenceOfString(string haystack, string needle, bool case_sens
 
 /* Checks if a string is a number. */
 
-bool IsNumeric(string str)
+boolean IsNumeric(string str)
 {
     string pstr = str;
     uint32 index = 0;
-    bool numeric = (str) ? true : false;
-    bool hex = ((*pstr == '0') && (*(pstr + 1) == 'x'));
+    boolean numeric = (str) ? true : false;
+    boolean hex = ((*pstr == '0') && (*(pstr + 1) == 'x'));
 
     if(hex)
     {

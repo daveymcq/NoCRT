@@ -112,7 +112,7 @@ string SignedIntegerToString(int64 integer, string out_result, uint32 out_result
     static int8 result[66];
 
     string presult = result;
-    bool negative = (integer < 0);
+    boolean negative = (integer < 0);
 
     if(negative)
     {
@@ -141,17 +141,17 @@ string IntegerToString(int64 integer, string out_result, uint32 out_result_lengt
     return SignedIntegerToString(integer, out_result, out_result_length, base);
 }
 
-/* Convert double precision floating point number to a string.
+/* Convert real8 precision floating point number to a string.
    Supports only decimal conversions. */
 
-string DoubleToString(double number, string out_result, uint32 out_result_length)
+string DoubleToString(real8 number, string out_result, uint32 out_result_length)
 {
     static int8 result[83];
 
     string presult = result;
-    bool negative = (number < 0);
+    boolean negative = (number < 0);
     int64 whole = (int64)number;
-    double fraction = (number - whole);
+    real8 fraction = (number - whole);
     INTFMT format = FMT_INT_DECIMAL;
 
     IntegerToString(whole, presult, 20, format);
@@ -356,7 +356,7 @@ int64 StringToInteger(string str, INTFMT base)
 {
     int64 result = 0;
     string pstr = str;
-    bool negative = (*pstr == '-');
+    boolean negative = (*pstr == '-');
 
     if(negative)
     {
@@ -372,22 +372,22 @@ int64 StringToInteger(string str, INTFMT base)
     return result;
 }
 
-/* Convert string to a double precision floating point.
+/* Convert string to a real8 precision floating point.
    Supports only decimal conversions. */
 
-double StringToDouble(string str) 
+real8 StringToDouble(string str) 
 {
     string pstr = str;
 
     if(pstr)
     {
         int64 number = 0;
-        double power = 10.0;
-        double result = 0.0;
+        real8 power = 10.0;
+        real8 result = 0.0;
         int16 exponent = 0;
         uint16 number_of_digits = 0;
         uint16 number_of_decimals = 0;
-        bool negative = false;
+        boolean negative = false;
 
         if(*pstr == '-')
         {

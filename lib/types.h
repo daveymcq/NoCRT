@@ -69,16 +69,40 @@
     #define wstring wchar *
 #endif
 
+#ifndef real4
+    #define real4 float
+#endif
+
+#ifndef real8
+    #define real8 double
+#endif
+
+#ifndef BOOL
+    #define BOOL int32
+#endif
+
 #ifndef bool
-    #define bool uint8
+    #define bool int32
+#endif
+
+#ifndef boolean
+    #define boolean int32
 #endif
 
 #ifndef true
-    #define true 0x01
+    #define true 0x00000001
 #endif
 
 #ifndef false
-    #define false 0x00
+    #define false 0x00000000
+#endif
+
+#ifndef TRUE
+    #define TRUE 0x00000001
+#endif
+
+#ifndef FALSE
+    #define FALSE 0x00000000
 #endif
 
 #ifdef BIT
@@ -87,6 +111,14 @@
 
 #ifdef BYTE
     #undef BYTE
+#endif
+
+#ifndef PVOID
+    #define PVOID void *
+#endif
+
+#ifndef VOID
+    #define VOID void
 #endif
 
 typedef enum _INTFMT

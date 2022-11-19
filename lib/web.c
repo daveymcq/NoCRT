@@ -4,7 +4,7 @@ string urlencode(string URL)
 {
     static int8 encoded_url[2048];
 
-    string hex_lookup_table = "0123456789ABCDEF";
+    int8 hex_lookup_table[] = "0123456789ABCDEF";
     uint32 index, i;
 
     index = 0;

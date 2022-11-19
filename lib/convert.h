@@ -16,10 +16,10 @@ string SignedIntegerToString(int64, string, uint32, INTFMT);
 
 string IntegerToString(int64, string, uint32, INTFMT);
 
-/* Convert double precision floating point number to a string.
+/* Convert real8 precision floating point number to a string.
    Supports only decimal conversions. */
 
-string DoubleToString(double, string, uint32);
+string DoubleToString(real8, string, uint32);
 
 /* Convert string to an unsigned 64 bit integer.
    Supports hexadecimal, decimal, and binary conversions. */
@@ -31,10 +31,10 @@ uint64 StringToUnsignedInteger(string, INTFMT);
 
 int64 StringToInteger(string, INTFMT);
 
-/* Convert string to a double precision floating point.
+/* Convert string to a real8 precision floating point.
    Supports only decimal conversions. */
 
-double StringToDouble(string);
+real8 StringToDouble(string);
 
 /* Convert wide cstrings to standard cstrings. */
 
