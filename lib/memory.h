@@ -15,8 +15,8 @@ PVOID MemoryCopy(PVOID , PVOID , uint64);
 
 /* Bitwies functions: Set and clear bits, convert bits to bytes and vice-versa. */
 
-BIT *ByteToBits(BYTE, BIT *);
-BYTE BitsToByte(BIT *);
+Bit *ByteToBits(Byte, Bit *);
+Byte BitsToByte(Bit *);
 
 boolean CheckBit(PVOID , uint8);
 boolean SetBit(PVOID , uint8);

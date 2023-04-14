@@ -354,7 +354,7 @@ uint64 StringToUnsignedInteger(string str, INTFMT base)
 
 int64 StringToInteger(string str, INTFMT base)
 {
-    int64 result = 0;
+    uint64 result = 0;
     string pstr = str;
     boolean negative = (*pstr == '-');
 

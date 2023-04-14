@@ -17,6 +17,10 @@
     #define uint8 unsigned char
 #endif
 
+#ifndef byte
+    #define byte char
+#endif
+
 #ifndef uint16
     #define uint16 unsigned short
 #endif
@@ -156,8 +160,8 @@ typedef union _BYTE
 
 } _BYTE_;
 
-#define BIT _BIT_
-#define BYTE _BYTE_
+#define Bit _BIT_
+#define Byte _BYTE_
 
 #pragma pack(pop)
 

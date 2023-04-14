@@ -50,9 +50,9 @@ PVOID MemoryCopy(PVOID dest, PVOID src, uint64 length)
 
 /* Bitwies functions: Set and clear bits, convert bits to bytes and vice-versa. */
 
-BIT *ByteToBits(BYTE b, BIT *bits)
+Bit *ByteToBits(Byte b, Bit *bits)
 {
-    static BIT result[8];
+    static Bit result[8];
     uint8 bit;
     
     for(bit = 0; bit < 8; bit++)
@@ -69,9 +69,9 @@ BIT *ByteToBits(BYTE b, BIT *bits)
     return result;
 }
 
-BYTE BitsToByte(BIT *bits)
+Byte BitsToByte(Bit *bits)
 {
-    BYTE result;
+    Byte result;
     uint8 bit;
 
     for(bit = 0; bit < 8; bit++)
